@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Rodrigo — SDR Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --accent-light: #4299e1;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-subtle: #f7fafc;
+            --border: #e2e8f0;
+            --success: #38a169;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .resume {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--bg);
+        }
+
+        @media print {
+            body {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            .resume {
+                max-width: 100%;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .photo-container {
+            flex-shrink: 0;
+        }
+
+        .photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .header-content {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 13px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.9;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Language Badge */
+        .language-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+
+        .language-badge .flag {
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 30px 40px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 18px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Summary */
+        .summary {
+            background: var(--bg-subtle);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .summary strong {
+            color: var(--primary);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .skill-category {
+            background: var(--bg-subtle);
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .skill-category h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            font-size: 13px;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .skill-list li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 24px;
+            page-break-inside: avoid;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .job-company {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .job-meta {
+            font-size: 13px;
+            color: var(--text-light);
+            text-align: right;
+        }
+
+        .job-section {
+            margin-bottom: 12px;
+        }
+
+        .job-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .job-bullets {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-bullets li {
+            font-size: 13px;
+            padding: 3px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job-bullets li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Two Column Layout for Bottom */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Education */
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .school {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .edu-years {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Languages */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        .language-name {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-level {
+            font-size: 12px;
+            background: var(--bg-subtle);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .language-note {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* Additional Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .info-item {
+            font-size: 13px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            color: var(--text);
+            margin-top: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 12px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+            transition: all 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <!-- Header -->
+        <header class="header">
+            <div class="photo-container">
+                <!-- Replace src with actual photo URL or local file -->
+                <div class="photo">👤</div>
+                <!-- Or use: <img class="photo" src="nico-photo.jpg" alt="Nicolas Rodrigo"> -->
+            </div>
+            <div class="header-content">
+                <h1 class="name">Nicolas Rodrigo</h1>
+                <div class="title">Sales Development Representative</div>
+                <div class="contact-row">
+                    <span class="contact-item">📍 San Jose, CA</span>
+                    <span class="contact-item">📱 (703) 772-5306</span>
+                    <span class="contact-item">📧 <a href="mailto:nicorodrigo703@gmail.com">nicorodrigo703@gmail.com</a></span>
+                    <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/nicolas-rodrigo-8b0682b6/" target="_blank">LinkedIn</a></span>
+                </div>
+                <div class="language-badge">
+                    <span class="flag">🇺🇸</span> English
+                    <span style="opacity: 0.5">•</span>
+                    <span class="flag">🇦🇷</span> Spanish (Native)
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Summary -->
+            <section class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="summary">
+                    <strong>Bilingual (English/Spanish)</strong> customer-facing professional with <strong>5+ years</strong> of experience in high-volume hospitality and project management. Proven track record of <strong>upselling, leading teams under pressure</strong>, and building rapport with Fortune 500 clients including <strong>Salesforce, Apple, Meta, and Deloitte</strong>. Native Spanish speaker (Argentine heritage) ready to <strong>drive pipeline in LATAM and US Hispanic markets</strong> from Day 1.
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="section">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Sales Skills</h4>
+                        <ul class="skill-list">
+                            <li>Upselling & Cross-selling</li>
+                            <li>Client Relationship Building</li>
+                            <li>Objection Handling</li>
+                            <li>Lead Qualification</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Communication</h4>
+                        <ul class="skill-list">
+                            <li>Bilingual: English & Spanish</li>
+                            <li>Presentation Skills</li>
+                            <li>Cross-functional Coordination</li>
+                            <li>Written & Verbal</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Operations</h4>
+                        <ul class="skill-list">
+                            <li>Team Leadership (10-15 ppl)</li>
+                            <li>Event Coordination (250+)</li>
+                            <li>Training & Mentorship</li>
+                            <li>Logistics & Scheduling</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <!-- Topgolf -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Bay Host & Event Lead</div>
+                            <div class="job-company">Topgolf</div>
+                        </div>
+                        <div class="job-meta">
+                            San Jose, CA<br>
+                            June 2021 – Present
+                        </div>
+                    </div>
+                    
+                    <div class="job-section">
+                        <div class="job-section-title">Client-Facing Sales & Service</div>
+                        <ul class="job-bullets">
+                            <li>Primary contact for corporate buyout events featuring <span class="highlight">Salesforce, Apple, Meta, and Deloitte</span></li>
+                            <li>Manage guest experiences for <span class="highlight">180–250 attendees</span> per event with zero tolerance for error</li>
+                            <li><span class="highlight">Upsell premium products</span> including alcohol upgrades (+50-75%) and $43 food platters</li>
+                            <li>Refer high-value party inquiries to sales office, contributing to event booking pipeline</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-section">
+                        <div class="job-section-title">Team Leadership & Training</div>
+                        <ul class="job-bullets">
+                            <li>Coordinate teams of <span class="highlight">10–15 employees</span> during high-stakes corporate events</li>
+                            <li><span class="highlight">Train all new hires</span> through hands-on floor mentorship after initial onboarding</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-section">
+                        <div class="job-section-title">Bilingual Operations</div>
+                        <ul class="job-bullets">
+                            <li>Serve as <span class="highlight">primary Spanish-language support</span> for guests and staff</li>
+                            <li>Resolve customer issues in both languages, ensuring seamless experience</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- LP Roofing -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Assistant Project Manager</div>
+                            <div class="job-company">LP Roofing, LLC</div>
+                        </div>
+                        <div class="job-meta">
+                            Washington DC Metro<br>
+                            Aug 2019 – Jul 2020
+                        </div>
+                    </div>
+                    
+                    <div class="job-section">
+                        <ul class="job-bullets">
+                            <li>Managed logistics for commercial roofing projects with crews of <span class="highlight">15 workers</span></li>
+                            <li>Led flagship <span class="highlight">9-month project</span> (Putney Building, Richmond VA) coordinating across multiple trades</li>
+                            <li>Conducted daily status meetings with electrical, concrete, and framing teams</li>
+                            <li>Drove <span class="highlight">150–200 miles daily</span> across DC Metro area to maintain job site relationships</li>
+                            <li><strong>Tools:</strong> Blue Beam, Excel, phone/email coordination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- On Tap Magazine -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Editorial & Events Intern</div>
+                            <div class="job-company">On Tap Magazine</div>
+                        </div>
+                        <div class="job-meta">
+                            Alexandria, VA<br>
+                            May – Sep 2017
+                        </div>
+                    </div>
+                    <ul class="job-bullets">
+                        <li>Wrote articles for monthly publication; conducted interviews and event coordination</li>
+                        <li>Managed content calendar via WordPress and Excel; performed distribution spot-checks</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Two Column Section -->
+            <div class="two-col">
+                <!-- Left Column -->
+                <div>
+                    <!-- Education -->
+                    <section class="section">
+                        <h2 class="section-title">Education</h2>
+                        <div class="education-item">
+                            <div>
+                                <div class="degree">Bachelor of Arts</div>
+                                <div class="school">Communication & Journalism<br>George Mason University</div>
+                            </div>
+                            <div class="edu-years">2012 – 2017</div>
+                        </div>
+                    </section>
+
+                    <!-- Languages -->
+                    <section class="section">
+                        <h2 class="section-title">Languages</h2>
+                        <div class="language-item">
+                            <div>
+                                <div class="language-name">🇺🇸 English</div>
+                            </div>
+                            <span class="language-level">Native</span>
+                        </div>
+                        <div class="language-item">
+                            <div>
+                                <div class="language-name">🇦🇷 Spanish</div>
+                                <div class="language-note">Heritage speaker • Sales-call ready</div>
+                            </div>
+                            <span class="language-level">Fluent</span>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div>
+                    <!-- Additional Info -->
+                    <section class="section">
+                        <h2 class="section-title">Additional Information</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Availability</div>
+                                <div class="info-value">January 2025</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Location</div>
+                                <div class="info-value">SF Bay Area (Hybrid/Remote)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Industries</div>
+                                <div class="info-value">SaaS, Gaming, FoodTech</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Technical</div>
+                                <div class="info-value">Excel, Google Workspace, CRM-ready</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Fun Fact -->
+                    <section class="section">
+                        <h2 class="section-title">Competitive Edge</h2>
+                        <div class="summary" style="font-size: 13px;">
+                            🎮 <strong>Top 1% World of Warcraft player</strong> — I bring the same dedication, strategy, and commitment to crushing quota.
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            References available upon request
+        </footer>
+    </div>
+
+    <!-- Print Button -->
+    <button class="print-btn no-print" onclick="window.print()">
+        🖨️ Print / Save PDF
+    </button>
+</body>
+</html>
+

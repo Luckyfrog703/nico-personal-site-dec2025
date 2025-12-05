@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Rodrigo — The Connector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fefcf9;
+            --bg-warm: #fff8f0;
+            --bg-card: #ffffff;
+            --text: #2d2a26;
+            --text-soft: #6b6560;
+            --accent: #e07c4c;
+            --accent-light: #f4a574;
+            --accent-dark: #c5633a;
+            --blue: #4a90a4;
+            --green: #5a9a6e;
+            --border: #ebe6df;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 30px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 8px 30px rgba(224, 124, 76, 0.2);
+        }
+
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            font-size: 14px;
+            color: var(--text-soft);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-item a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-warm);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 17px;
+            color: var(--text);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .about strong {
+            color: var(--accent-dark);
+        }
+
+        /* What Makes Me Different */
+        .different {
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+        }
+
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .trait-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .trait-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            border-color: var(--accent-light);
+        }
+
+        .trait-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .trait-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .trait-desc {
+            font-size: 13px;
+            color: var(--text-soft);
+            line-height: 1.5;
+        }
+
+        /* Experience */
+        .experience {
+            margin-bottom: 40px;
+        }
+
+        .job {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        .job-timeline {
+            flex-shrink: 0;
+            width: 80px;
+            text-align: right;
+        }
+
+        .job-year {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .job-duration {
+            font-size: 12px;
+            color: var(--text-soft);
+        }
+
+        .job-content {
+            flex-grow: 1;
+            padding-left: 24px;
+            border-left: 2px solid var(--border);
+            position: relative;
+        }
+
+        .job-content::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .job-company {
+            font-size: 15px;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+
+        .job-section {
+            margin-bottom: 12px;
+        }
+
+        .job-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-soft);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .job-bullets {
+            list-style: none;
+        }
+
+        .job-bullets li {
+            font-size: 14px;
+            color: var(--text);
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job-bullets li::before {
+            content: "♦";
+            position: absolute;
+            left: 0;
+            color: var(--accent-light);
+            font-size: 10px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        /* Education & Languages */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .info-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-soft);
+            margin-bottom: 16px;
+        }
+
+        .language-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-row:last-child {
+            border-bottom: none;
+        }
+
+        .lang-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .lang-level {
+            font-size: 12px;
+            background: var(--bg-warm);
+            color: var(--accent-dark);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .edu-school {
+            font-size: 14px;
+            color: var(--text-soft);
+        }
+
+        .edu-year {
+            font-size: 13px;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        /* Looking For */
+        .looking-for {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 20px;
+            padding: 35px;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .looking-for h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .looking-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .looking-item {
+            text-align: center;
+        }
+
+        .looking-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+
+        .looking-value {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* Connect */
+        .connect {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-warm);
+            border-radius: 20px;
+        }
+
+        .connect-text {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .connect-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .connect-btn:hover {
+            background: var(--accent-dark);
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .traits-grid {
+                grid-template-columns: 1fr;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            .looking-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .job {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .job-timeline {
+                text-align: left;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <header class="header">
+            <div class="avatar">👋</div>
+            <h1 class="name">Nicolas Rodrigo</h1>
+            <p class="subtitle">Bilingual Relationship Builder → Tech Sales</p>
+            
+            <div class="contact-row">
+                <span class="contact-item">📍 San Jose, CA</span>
+                <span class="contact-item">📱 (703) 772-5306</span>
+                <span class="contact-item">📧 <a href="mailto:nicorodrigo703@gmail.com">nicorodrigo703@gmail.com</a></span>
+                <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/nicolas-rodrigo-8b0682b6/" target="_blank">LinkedIn</a></span>
+            </div>
+        </header>
+
+        <!-- About -->
+        <section class="about">
+            <p>
+                I build relationships for a living. For the past 4+ years, I've been the face of Topgolf for corporate clients like <strong>Salesforce, Apple, Meta, and Deloitte</strong> — making sure hundreds of guests have an incredible experience while coordinating teams behind the scenes.
+                <br><br>
+                I'm fluent in <strong>English and Spanish</strong> (Argentine heritage), which means I can connect with LATAM markets from Day 1.
+            </p>
+        </section>
+
+        <!-- What Makes Me Different -->
+        <section class="different">
+            <h2 class="section-title">What Makes Me Different</h2>
+            
+            <div class="traits-grid">
+                <div class="trait-card">
+                    <div class="trait-icon">🌎</div>
+                    <div class="trait-title">Bilingual from Birth</div>
+                    <div class="trait-desc">Native-level Spanish (Argentine mom). Practice daily. Ready for LATAM sales calls from Day 1.</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🤝</div>
+                    <div class="trait-title">Built for Relationships</div>
+                    <div class="trait-desc">4+ years face-to-face with Fortune 500 clients. Known as "the jokester" — I build rapport naturally.</div>
+                </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🎯</div>
+                    <div class="trait-title">Results-Oriented</div>
+                    <div class="trait-desc">Consistent upseller. Train new hires. Solve problems before they escalate.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="experience">
+            <h2 class="section-title">Experience</h2>
+
+            <div class="job">
+                <div class="job-timeline">
+                    <div class="job-year">2021</div>
+                    <div class="job-duration">Present</div>
+                </div>
+                <div class="job-content">
+                    <div class="job-title">Bay Host & Event Lead</div>
+                    <div class="job-company">Topgolf · San Jose, CA</div>
+                    
+                    <div class="job-section">
+                        <div class="job-section-title">Client-Facing Excellence</div>
+                        <ul class="job-bullets">
+                            <li>Primary contact for corporate events (<span class="highlight">Salesforce, Apple, Meta, Deloitte</span>)</li>
+                            <li>Manage guest experiences for groups of 180–250 people</li>
+                            <li>Communicate expectations, timing, and escalation paths with organizers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-section">
+                        <div class="job-section-title">Team Coordination</div>
+                        <ul class="job-bullets">
+                            <li>Lead teams of 10–15 employees during high-stakes events</li>
+                            <li>Train all new hires through hands-on floor mentorship</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-section">
+                        <div class="job-section-title">Bilingual Support</div>
+                        <ul class="job-bullets">
+                            <li>Step in to assist Spanish-speaking guests and kitchen staff</li>
+                            <li>Bridge communication gaps to ensure seamless experience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-timeline">
+                    <div class="job-year">2019</div>
+                    <div class="job-duration">2020</div>
+                </div>
+                <div class="job-content">
+                    <div class="job-title">Assistant Project Manager</div>
+                    <div class="job-company">LP Roofing, LLC · DC Metro Area</div>
+                    
+                    <ul class="job-bullets">
+                        <li>Daily coordination with project managers and trade teams</li>
+                        <li>Provided real-time status updates across multiple job sites</li>
+                        <li>Managed 9-month commercial project with 15-person crew</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Column -->
+        <div class="two-col">
+            <div class="info-card">
+                <h4>Education</h4>
+                <div class="edu-degree">Bachelor of Arts</div>
+                <div class="edu-school">Communication & Journalism<br>George Mason University</div>
+                <div class="edu-year">2012 – 2017</div>
+            </div>
+            
+            <div class="info-card">
+                <h4>Languages</h4>
+                <div class="language-row">
+                    <span class="lang-name">🇺🇸 English</span>
+                    <span class="lang-level">Native</span>
+                </div>
+                <div class="language-row">
+                    <span class="lang-name">🇦🇷 Spanish</span>
+                    <span class="lang-level">Fluent · Sales-ready</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Looking For -->
+        <section class="looking-for">
+            <h3>What I'm Looking For</h3>
+            <div class="looking-grid">
+                <div class="looking-item">
+                    <div class="looking-label">Role</div>
+                    <div class="looking-value">SDR / BDR</div>
+                </div>
+                <div class="looking-item">
+                    <div class="looking-label">Industries</div>
+                    <div class="looking-value">SaaS, Gaming, FoodTech</div>
+                </div>
+                <div class="looking-item">
+                    <div class="looking-label">Location</div>
+                    <div class="looking-value">Bay Area (Hybrid)</div>
+                </div>
+                <div class="looking-item">
+                    <div class="looking-label">Available</div>
+                    <div class="looking-value">January 2025</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect -->
+        <section class="connect">
+            <p class="connect-text">
+                I'm passionate about people, food, and competition (I was a top 1% World of Warcraft player — yes, really). I believe the best salespeople are the ones who genuinely enjoy connecting with others.
+                <br><br>
+                <strong>That's me. Let's talk.</strong>
+            </p>
+            <a href="mailto:nicorodrigo703@gmail.com" class="connect-btn">Get in Touch ☕</a>
+        </section>
+    </div>
+</body>
+</html>
+

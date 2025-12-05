@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Sensitive data (uncomment if needed)
+# paul-linkedin-connections.csv
+

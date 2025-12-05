@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Rodrigo — The Hustler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --bg-accent: #252525;
+            --text: #ffffff;
+            --text-dim: #888888;
+            --accent: #00ff88;
+            --accent-secondary: #00d4ff;
+            --warning: #ffcc00;
+            --gradient: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .name {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 8px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .tagline strong {
+            color: var(--accent);
+        }
+
+        /* Contact Bar */
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-item a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pitch Section */
+        .pitch {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-accent);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pitch::before {
+            content: "//";
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 48px;
+            color: var(--bg-accent);
+        }
+
+        .pitch-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .pitch-text {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .pitch-text strong {
+            color: var(--accent);
+        }
+
+        /* Stats Grid */
+        .stats-section {
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--bg-accent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-accent);
+            border-radius: 8px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stat-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Experience */
+        .experience {
+            margin-bottom: 30px;
+        }
+
+        .job {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-accent);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .job-company {
+            color: var(--accent-secondary);
+            font-size: 14px;
+        }
+
+        .job-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+            background: var(--bg-accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .job-bullets {
+            list-style: none;
+        }
+
+        .job-bullets li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+
+        .job-bullets li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .job-bullets li strong {
+            color: var(--text);
+        }
+
+        .highlight {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Skills */
+        .skills-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .skill-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            background: var(--bg-accent);
+            color: var(--text-dim);
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Bottom Line */
+        .bottom-line {
+            background: var(--gradient);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .bottom-line h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bg);
+            margin-bottom: 12px;
+        }
+
+        .bottom-line p {
+            font-size: 16px;
+            color: var(--bg);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--bg-accent);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient);
+            color: var(--bg);
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .footer-note {
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 36px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .page {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="name">NICOLAS RODRIGO</h1>
+            <p class="tagline">Bilingual SDR · <strong>Ready to outwork your competition</strong></p>
+            
+            <div class="contact-bar">
+                <span class="contact-item">📍 San Jose, CA</span>
+                <span class="contact-item">📱 (703) 772-5306</span>
+                <span class="contact-item">📧 <a href="mailto:nicorodrigo703@gmail.com">nicorodrigo703@gmail.com</a></span>
+                <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/nicolas-rodrigo-8b0682b6/" target="_blank">LinkedIn</a></span>
+            </div>
+        </header>
+
+        <!-- Pitch -->
+        <section class="pitch">
+            <div class="pitch-title">The Pitch</div>
+            <p class="pitch-text">
+                I'm a <strong>bilingual English/Spanish professional</strong> with 5+ years of experience in high-volume customer environments and project coordination. I've led corporate events for <strong>Salesforce, Apple, Meta, and Deloitte</strong>, trained dozens of employees, and consistently driven upsells in fast-paced settings.
+                <br><br>
+                Now I'm bringing that hustle to tech sales — <strong>where effort directly translates to results.</strong>
+            </p>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-section">
+            <div class="section-header">
+                <span class="section-title">Why I'll Outwork Your Competition</span>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-label">Events Led</div>
+                    <div class="stat-value">250+ guests</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-label">Upsell Rate</div>
+                    <div class="stat-value">+50-75%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌎</div>
+                    <div class="stat-label">Languages</div>
+                    <div class="stat-value">EN / ES</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚗</div>
+                    <div class="stat-label">Daily Miles</div>
+                    <div class="stat-value">150-200</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">WoW Rank</div>
+                    <div class="stat-value">Top 1%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="experience">
+            <div class="section-header">
+                <span class="section-title">Experience</span>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Bay Host & Event Lead</div>
+                        <div class="job-company">Topgolf, San Jose</div>
+                    </div>
+                    <span class="job-date">2021 → Present</span>
+                </div>
+                <ul class="job-bullets">
+                    <li>Lead corporate buyouts for <span class="highlight">Fortune 500 tech companies</span></li>
+                    <li>Coordinate teams of <strong>10–15 employees</strong>: task assignment, buffet setup, client liaison</li>
+                    <li><strong>Train all new hires</strong> on floor operations after initial onboarding</li>
+                    <li>Upsell premium products and refer large-party inquiries to sales</li>
+                    <li>Serve as <span class="highlight">bilingual support</span> for Spanish-speaking guests</li>
+                </ul>
+                <div class="skills-row">
+                    <span class="skill-tag">Upselling</span>
+                    <span class="skill-tag">Event Coordination</span>
+                    <span class="skill-tag">Team Leadership</span>
+                    <span class="skill-tag">Bilingual</span>
+                    <span class="skill-tag">Training</span>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Assistant Project Manager</div>
+                        <div class="job-company">LP Roofing, LLC — DC Metro</div>
+                    </div>
+                    <span class="job-date">2019 → 2020</span>
+                </div>
+                <ul class="job-bullets">
+                    <li>Managed logistics for commercial projects (<strong>15-person crews</strong>)</li>
+                    <li>Led <span class="highlight">9-month flagship project</span> coordinating across multiple trades</li>
+                    <li>Drove 150–200 miles/day; daily syncs with electrical, concrete, framing</li>
+                </ul>
+                <div class="skills-row">
+                    <span class="skill-tag">Blue Beam</span>
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Logistics</span>
+                    <span class="skill-tag">Cross-functional</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Line -->
+        <section class="bottom-line">
+            <h3>Ready to crush quota.</h3>
+            <p>
+                I've spent years learning how to read people, solve problems on the fly, and turn a "no" into a "yes." I speak Spanish like a native because I am one.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:nicorodrigo703@gmail.com" class="cta-button">Let's Talk →</a>
+            <p class="footer-note">Available January 2025 · $75K–$80K+ base · Bay Area (Hybrid/Remote)</p>
+        </footer>
+    </div>
+</body>
+</html>
+
