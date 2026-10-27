@@ -96,7 +96,7 @@ Bachelor of Arts — Communication, Journalism
 
 ## Let's Connect
 
-I'm passionate about people, food, and competition (I was a top 1% World of Warcraft player — yes, really). I cook almost every day, I'll try any cuisine once, and I believe the best salespeople are the ones who genuinely enjoy connecting with others.
+I'm passionate about people, food, and competition (I was a competitive gamer — yes, really). I cook almost every day, I'll try any cuisine once, and I believe the best salespeople are the ones who genuinely enjoy connecting with others.
 
 **That's me. Let's talk.**
 
