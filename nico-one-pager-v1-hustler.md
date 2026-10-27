@@ -25,7 +25,7 @@ Now I'm bringing that hustle to tech sales — where effort directly translates 
 | **Upselling DNA** | Consistently upgraded customer purchases ($8 → $14 drinks, $43 platters) |
 | **Bilingual Fluency** | Native-level Spanish (Argentine heritage) — ready for LATAM sales calls Day 1 |
 | **Project Coordination** | Ran logistics for 9-month commercial projects, 150+ miles/day across job sites |
-| **Competitive Drive** | Top 1% World of Warcraft player — I don't just participate, I dominate |
+| **Competitive Drive** | Competitive gamer — I don't just participate, I dominate |
 
 ---
 
