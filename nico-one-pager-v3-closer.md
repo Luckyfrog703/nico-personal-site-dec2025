@@ -110,7 +110,7 @@ I've been in "NPC roles" my whole career — jobs where effort doesn't equal rew
 
 ## PERSONAL
 
-- **Competitive gamer:** Top 1% World of Warcraft player (hunter main)
+- **Competitive gamer:** Competitive gamer (hunter main)
 - **Home chef:** Cooks daily, experiments with recipes, makes sausage from scratch
 - **Mindset:** Lost my father at 10 — learned early that resilience isn't optional
 
