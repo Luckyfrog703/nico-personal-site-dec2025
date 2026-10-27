@@ -104,7 +104,7 @@ Bachelor of Arts — Communication & Journalism
 - **Availability:** January 2025 (2 weeks notice)
 - **Location Preference:** San Jose / SF Bay Area — Open to hybrid or remote
 - **Industries of Interest:** SaaS, Gaming, FoodTech, DevTools, Cybersecurity
-- **Competitive Edge:** Top 1% World of Warcraft player — brings same dedication to quota
+- **Competitive Edge:** Competitive gamer — brings same dedication to quota
 
 ---
 
