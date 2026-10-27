@@ -145,7 +145,7 @@
 
 ### Competitive Spirit: World of Warcraft
 - Played WoW seriously for years
-- **Top 1% of the community** as a hunter
+- **Competitive player** as a hunter
 - Required 8–10 hours/day commitment, coordination, strategy
 - Demonstrates: dedication, time management, competitive drive, team coordination
 
